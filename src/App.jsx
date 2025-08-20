@@ -62,14 +62,16 @@ function App() {
 
   useEffect(() => {
     if (activeFilter === 'all') {
-      setFilteredTodos(todos)
+      setFilteredTodos(todos);
     } else if (activeFilter === 'active') {
-      setFilteredTodos(todos.filter(todo => !todo.completed))
+        const activeTodos = todos.filter(todo => todo.completed === false);
+        setFilteredTodos(activeTodos);
     } else if (activeFilter === 'completed') {
-      setFilteredTodos(todos.filter(todo => todo.completed))
+        const completedTodos = todos.filter(todo => todo.completed === true);
+        setFilteredTodos(completedTodos);
     }
-
-},[activeFilter, todos])
+    
+  },[activeFilter, todos]);
 
   return (
     <div className='bg-gray-900 min-h-screen h-full text-gray-100 flex items-center justify-center py-20 px-5'>
